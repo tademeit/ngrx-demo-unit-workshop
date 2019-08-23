@@ -8,16 +8,15 @@ export interface State {
 
 export const initialState: State = {
   todos: [{
-    id: 1,
     title: 'Mein erstes Todo',
     description: 'Bitte einkaufen'
   }]
-}
+};
 
 export const todoReducers = createReducer(
   initialState,
-  on(TodoActions.todoAdd, (state, action) => ({ ...state, todos: [...state.todos, action.todo] }))
-)
+  on(TodoActions.todoAdd, (state, {payload}) => ({ ...state, todos: [...state.todos, payload.todo] }))
+);
 
 export function reducer(state: State | undefined, action: Action) {
   return todoReducers(state, action);
