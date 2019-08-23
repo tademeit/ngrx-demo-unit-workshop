@@ -1,0 +1,16 @@
+.todo-card {
+  margin: 15px 0;
+}
+
+.todo-card p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.button {
+  margin: 15px 0;
+}

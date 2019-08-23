@@ -1,0 +1,24 @@
+<mat-toolbar>
+  <span>Todo-Liste mit NgRX</span>
+</mat-toolbar>
+
+<ng-container *ngIf="todos$ | async as todos">
+    <mat-card class="todo-card" *ngFor="let todo of todos">
+      {{todo.title}}
+      <p>{{todo.description}}</p>
+    </mat-card>
+</ng-container>
+
+<div>
+  <form>
+      <mat-form-field>
+        <input matInput placeholder="Titel" name="title" [(ngModel)]="newTodo.title">
+      </mat-form-field>
+      <br />
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Beschreibung" name="description" [(ngModel)]="newTodo.description">
+      </mat-form-field>
+      <br />
+      <button type="submit" class="button" mat-raised-button color="primary" (click)="addTodo()">+</button>
+  </form>
+</div>
