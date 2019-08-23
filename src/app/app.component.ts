@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 
 import { Todo } from './models/todo.model';
 import * as fromTodos from './todo/store/todo.reducers';
 import * as TodoActions from './todo/store/todo.actions';
+import * as TodoSelectors from './todo/store/todo.selectors';
 
 @Component({
   selector: 'my-app',
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     this.resetNewTodo();
 
     this.todos$ = this.store$.pipe(
-      select('demo', 'todos')
+      select(TodoSelectors.selectTodos)
     );
   }
 
