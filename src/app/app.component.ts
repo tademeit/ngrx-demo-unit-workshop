@@ -30,13 +30,12 @@ export class AppComponent implements OnInit {
   }
 
   addTodo() {
-    this.store$.dispatch(TodoActions.todoAdd({todo: this.newTodo}));
+    this.store$.dispatch(TodoActions.todoAdd({payload: {todo: this.newTodo}}));
     this.resetNewTodo();
   }
 
   private resetNewTodo() {
     this.newTodo = {
-      id: undefined,
       title: '',
       description: ''
     }
