@@ -1,6 +1,6 @@
 import {createReducer, Action, on} from '@ngrx/store';
 import {Todo} from '../../models/todo.model';
-import * as TodoActions from './todo.actions';
+import { TodoActions, TodoActionTypes }from './todo.actions';
 
 export interface State {
   todos: Todo[];
@@ -13,11 +13,17 @@ export const initialState: State = {
   }]
 };
 
-export const todoReducers = createReducer(
-  initialState,
-  on(TodoActions.todoAdd, (state, {payload}) => ({ ...state, todos: [...state.todos, payload.todo] }))
-);
-
-export function reducer(state: State | undefined, action: Action) {
-  return todoReducers(state, action);
+export function reducer(state: State = initialState, action: TodoActions) {
+  switch(action.type) {
+    case TodoActionTypes.Add:
+      return {
+        ...state,
+        todos: [...state.todos, action.payload.todo]
+      }
+      case TodoActionTypes.AddSuccess:
+      return {
+        ...state,
+        todos: [...state.todos, action.payload.todo]
+      }
+  }
 }
